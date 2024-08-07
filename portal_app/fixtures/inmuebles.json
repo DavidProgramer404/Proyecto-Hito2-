@@ -1,0 +1,98 @@
+[
+    {
+        "model": "portal_app.inmueble",
+        "pk": 1,
+        "fields": {
+            "nombre": "Casa en el bosque",
+            "descripcion": "Casa de 4 habitaciones con vista panorámica",
+            "m2_construido": 120,
+            "m2_terreno": 150,
+            "nro_estacionamiento": 2,
+            "nro_habitacion": 4,
+            "nro_banio": 2,
+            "direccion": "Av. San Pedro 123",
+            "region": "Región del Este",
+            "id_comuna": 1,
+            "id_usuario": 1,
+            "id_tipo_inmueble": 1,
+            "precio_mensual_arriendo": 400000
+
+        }
+    },
+    {
+        "model": "portal_app.inmueble",
+        "pk": 2,
+        "fields": {
+            "nombre": "Apartamento en la calle",
+            "descripcion": "Apartamento de 3 habitaciones con vista panorámica",
+            "m2_construido": 80,
+            "m2_terreno": 100,
+            "nro_estacionamiento": 1,
+            "nro_habitacion": 3,
+            "nro_banio": 1,
+            "direccion": "Calle Perez 456",
+            "region": "Región de la Poniente",
+            "id_comuna": 2,
+            "id_usuario": 2,
+            "id_tipo_inmueble": 2,
+            "precio_mensual_arriendo": 300000
+        }
+    },
+    {
+        "model": "portal_app.inmueble",
+        "pk": 3,
+        "fields": {
+            "nombre": "Terreno en la playa",
+            "descripcion": "Terreno de 100 m2 con vista panorámica",
+            "m2_construido": 299,
+            "m2_terreno": 100,
+            "nro_estacionamiento": 3,
+            "nro_habitacion": 3,
+            "nro_banio": 2,
+            "direccion": "Playa Blanca 789",
+            "region": "Región de Occidente",
+            "id_comuna": 3,
+            "id_usuario": 3,
+            "id_tipo_inmueble": 3,
+            "precio_mensual_arriendo": 250000
+        }
+    },
+    {
+        "model": "portal_app.inmueble",
+        "pk": 4,
+        "fields": {
+            "nombre": "Local en la callejón",
+            "descripcion": "Local de 50 m2 con vista panorámica",
+            "m2_construido": 50,
+            "m2_terreno": 50,
+            "nro_estacionamiento": 1,
+            "nro_habitacion": 2,
+            "nro_banio": 1,
+            "direccion": "Callejón Gómez 147",
+            "region": "Región de Norte",
+            "id_comuna": 4,
+            "id_usuario": 4,
+            "id_tipo_inmueble": 4,
+            "precio_mensual_arriendo": 200000
+        }
+    },
+    {
+        "model": "portal_app.inmueble",
+        "pk": 5,
+        "fields": {
+            "nombre": "Casa en la montaña",
+            "descripcion": "Casa de 3 habitaciones con vista panorámica",
+            "m2_construido": 100,
+            "m2_terreno": 150,
+            "nro_estacionamiento": 2,
+            "nro_habitacion": 3,
+            "nro_banio": 2,
+            "direccion": "Montaña 234",
+            "region": "Región de Sur",
+            "id_comuna": 5,
+            "id_usuario": 5,
+            "id_tipo_inmueble": 1,
+            "precio_mensual_arriendo": 450000
+        }
+    }
+]

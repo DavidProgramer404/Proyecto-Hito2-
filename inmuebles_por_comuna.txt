@@ -1,0 +1,15 @@
+Comuna: Arica
+  Casa en el bosque - Casa de 4 habitaciones con vista panorámica
+
+Comuna: Camarones
+  Apartamento en la calle - Apartamento de 3 habitaciones con vista panorámica
+
+Comuna: General Lagos
+  Local en la callejón - Local de 50 m2 con vista panorámica
+
+Comuna: Iquique
+  Casa en la montaña - Casa de 3 habitaciones con vista panorámica
+
+Comuna: Putre
+  Terreno en la playa - Terreno de 100 m2 con vista panorámica
+

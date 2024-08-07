@@ -1,0 +1,7 @@
+id_tipo_inmueble	 tipo_inmueble
+----------------------------------------
+1	 Casa
+2	 Departamento
+3	 Oficina
+4	 Local Comercial
+5	 Terreno

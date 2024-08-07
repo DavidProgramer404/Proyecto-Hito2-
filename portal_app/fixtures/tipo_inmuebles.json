@@ -1,0 +1,37 @@
+[
+    {
+        "model": "portal_app.tipoinmueble",
+        "pk": 1,
+        "fields": {
+            "tipo_inmueble": "Casa"
+        }
+    },
+    {
+        "model": "portal_app.tipoinmueble",
+        "pk": 2,
+        "fields": {
+            "tipo_inmueble": "Departamento"
+        }
+    },
+    {
+        "model":"portal_app.tipoinmueble",
+        "pk":3,
+        "fields":{
+            "tipo_inmueble":"Oficina"
+        }
+    },
+    {
+        "model":"portal_app.tipoinmueble",
+        "pk":4,
+        "fields":{
+            "tipo_inmueble":"Local Comercial"
+        }
+    },
+    {
+        "model":"portal_app.tipoinmueble",
+        "pk":5,
+        "fields":{
+            "tipo_inmueble":"Terreno"
+        }
+    }
+]

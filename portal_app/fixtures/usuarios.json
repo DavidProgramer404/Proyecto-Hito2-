@@ -1,0 +1,67 @@
+[
+    {
+        "model": "portal_app.usuario",
+        "pk": 1,
+        "fields": {
+            "nombre": "admin",
+            "apellido": "admin",
+            "rut": "123456789-0",
+            "direccion": "direccion_admin2",
+            "telefono_personal": "1234567890",
+            "correo_electronico": "admin@example.com",
+            "id_tipo_usuario": 2
+        }
+    },
+    {
+        "model": "portal_app.usuario",
+        "pk": 2,
+        "fields": {
+            "nombre": "usuario",
+            "apellido": "usuario",
+            "rut": "987654321-9",
+            "direccion": "direccion_usuario1",
+            "telefono_personal": "9876543210",
+            "correo_electronico": "usuario@example.com",
+            "id_tipo_usuario": 3
+        }
+    },
+    {
+        "model": "portal_app.usuario",
+        "pk": 3,
+        "fields": {
+            "nombre": "usuario2",
+            "apellido": "usuario2",
+            "rut": "123456789-1",
+            "direccion": "direccion_usuario2",
+            "telefono_personal": "1234567891",
+            "correo_electronico": "usuario2@example.com",
+            "id_tipo_usuario": 4
+        }
+    },
+    {
+        "model": "portal_app.usuario",
+        "pk": 4,
+        "fields": {
+            "nombre": "usuario3",
+            "apellido": "usuario3",
+            "rut": "123456789-2",
+            "direccion": "direccion_usuario3",
+            "telefono_personal": "1234567892",
+            "correo_electronico": "usuario3@example.com",
+            "id_tipo_usuario": 1
+        }
+    },
+    {
+        "model": "portal_app.usuario",
+        "pk": 5,
+        "fields": {
+            "nombre": "usuario4",
+            "apellido": "usuario4",
+            "rut": "123456789-3",
+            "direccion": "direccion_usuario4",
+            "telefono_personal": "1234567893",
+            "correo_electronico": "usuario4@example.com",
+            "id_tipo_usuario": 3
+        }
+    }
+]

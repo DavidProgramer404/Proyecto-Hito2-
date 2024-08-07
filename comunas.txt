@@ -1,0 +1,154 @@
+id_comuna	 comuna
+----------------------------------------
+1	 Arica
+2	 Camarones
+3	 Putre
+4	 General Lagos
+5	 Iquique
+6	 Alto Hospicio
+7	 Pozo Almonte
+8	 Camiña
+9	 Colchane
+10	 Huara
+11	 Pica
+12	 Pozo Almonte
+13	 Antofagasta
+14	 Mejillones
+15	 Sierra Gorda
+16	 Taltal
+17	 Calama
+18	 Ollagüe
+19	 San Pedro de Atacama
+20	 Tocopilla
+21	 María Elena
+22	 Copiapó
+23	 Caldera
+24	 Tierra Amarilla
+25	 Chañaral
+26	 Diego de Almagro
+27	 Vallenar
+28	 Alto del Carmen
+29	 Freirina
+30	 Huasco
+31	 La Serena
+32	 Coquimbo
+33	 Andacollo
+34	 La Higuera
+35	 Paihuano
+36	 Vicuña
+37	 Illapel
+38	 Canela
+39	 Los Vilos
+40	 Salamanca
+41	 Ovalle
+42	 Combarbalá
+43	 Monte Patria
+44	 Punitaqui
+45	 Río Hurtado
+46	 Valparaíso
+47	 Casablanca
+48	 Concón
+49	 Juan Fernández
+50	 Puchuncaví
+51	 Quintero
+52	 Viña del Mar
+53	 Isla de Pascua
+54	 Los Andes
+55	 Calle Larga
+56	 Rinconada
+57	 San Esteban
+58	 La Ligua
+59	 Cabildo
+60	 Papudo
+61	 Petorca
+62	 Zapallar
+63	 Quillota
+64	 Calera
+65	 Hijuelas
+66	 La Cruz
+67	 Nogales
+68	 San Antonio
+69	 Algarrobo
+70	 Cartagena
+71	 El Quisco
+72	 El Tabo
+73	 Santo Domingo
+74	 San Felipe
+75	 Catemu
+76	 Llaillay
+77	 Panquehue
+78	 Putaendo
+79	 Santa María
+80	 Quilpué
+81	 Limache
+82	 Olmué
+83	 Villa Alemana
+84	 Rancagua
+85	 Codegua
+86	 Coinco
+87	 Coltauco
+88	 Doñihue
+89	 Graneros
+90	 Las Cabras
+91	 Machalí
+92	 Malloa
+93	 Mostazal
+94	 Olivar
+95	 Peumo
+96	 Pichidegua
+97	 Quinta de Tilcoco
+98	 Rengo
+99	 Requínoa
+100	 San Vicente
+101	 Pichilemu
+102	 La Estrella
+103	 Litueche
+104	 Marchihue
+105	 Navidad
+106	 Paredones
+107	 San Fernando
+108	 Chépica
+109	 Chimbarongo
+110	 Lolol
+111	 Nancagua
+112	 Palmilla
+113	 Peralillo
+114	 Placilla
+115	 Pumanque
+116	 Santa Cruz
+117	 Talca
+118	 Constitución
+119	 Curepto
+120	 Empedrado
+121	 Maule
+122	 Pelarco
+123	 Pencahue
+124	 Río Claro
+125	 San Clemente
+126	 San Rafael
+127	 Cauquenes
+128	 Chanco
+129	 Pelluhue
+130	 Curicó
+131	 Hualañé
+132	 Licantén
+133	 Molina
+134	 Rauco
+135	 Romeral
+136	 Sagrada Familia
+137	 Teno
+138	 Vichuquén
+139	 Linares
+140	 Colbún
+141	 Longaví
+142	 Parral
+143	 Retiro
+144	 San Javier
+145	 Villa Alegre
+146	 Yerbas Buenas
+147	 Concepción
+148	 Coronel
+149	 Chiguayante
+150	 Florida
+151	 Hualqui
+152	 Lota
