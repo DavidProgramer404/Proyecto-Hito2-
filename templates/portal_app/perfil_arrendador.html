@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+ARRENDADOR | Page
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Perfil del Arrendador</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead"><strong>Nombre de usuario:</strong> {{ nombre }}</p>
+                    <p class="lead"><strong>Email:</strong> {{ tipo_usuario.correo_electronico }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

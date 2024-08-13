@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class TipoUsuario(models.Model):
@@ -53,6 +54,7 @@ class Usuario(models.Model):
     telefono_personal = models.CharField(max_length=20, null=False)
     correo_electronico = models.EmailField(unique=True, null=False)
     id_tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE, db_column='id_tipo_usuario')
+    tipo_usuario = models.ForeignKey('TipoUsuario', on_delete=models.CASCADE, related_name='usuarios')
 
     class Meta:
         managed = False
@@ -71,19 +73,17 @@ class Inmueble(models.Model):
     nro_habitacion = models.IntegerField()
     nro_banio = models.IntegerField()
     direccion = models.CharField(max_length=50, null=False)
+    region = models.ForeignKey(Region, on_delete=models.CASCADE)  
     precio_mensual_arriendo = models.FloatField(null=False)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, db_column='id_usuario')
     id_comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE, db_column='id_comuna')
     id_tipo_inmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE, db_column='id_tipo_inmueble')
-
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, related_name='inmuebles')
+    comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE, related_name='inmuebles')
+    tipo_inmueble = models.ForeignKey(TipoInmueble, on_delete=models.CASCADE, related_name='inmuebles')
     class Meta:
         managed = False
         db_table = 'inmuebles'
 
     def __str__(self):
         return self.nombre
-
-
-
-
-
