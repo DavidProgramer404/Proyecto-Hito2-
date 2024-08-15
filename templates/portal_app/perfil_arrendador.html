@@ -1,21 +1,34 @@
-{% extends 'index.html' %}
-{% load static %}
+{% extends 'base.html' %}
 
 {% block title %}
-ARRENDADOR | Page
+ARRRENDADOR | Page
 {% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h2>Perfil del Arrendador</h2>
+                    <h2>Perfil de los Arrendadores</h2>
                 </div>
                 <div class="card-body">
-                    <p class="lead"><strong>Nombre de usuario:</strong> {{ nombre }}</p>
-                    <p class="lead"><strong>Email:</strong> {{ tipo_usuario.correo_electronico }}</p>
+                    {% if "" %}
+                        {% for arrendador in arrendadores %}
+                            <div class="mb-4">
+                                <p class="lead"><strong>Nombre:</strong> {{ arrendador.nombre }} {{ arrendador.apellido }}</p>
+                                <p class="lead"><strong>Email:</strong> {{ arrendador.correo_electronico }}</p>
+                                <p class="lead"><strong>Teléfono:</strong> {{ arrendador.telefono_personal }}</p>
+                                <p class="lead"><strong>Dirección:</strong> {{ arrendador.direccion }}</p>
+                                <p class="lead"><strong>RUT:</strong> {{ arrendador.rut }}</p>
+                                <hr>
+                            </div>
+                        {% empty %}
+                            <p>No hay arrendadores disponibles.</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>No hay arrendadores disponibles.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

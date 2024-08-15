@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portal_app',
+    
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# loggin
+LOGIN_REDIRECT_URL = '/perfil_arrendatario/'
+LOGOUT_REDIRECT_URL = '/login/'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+)
