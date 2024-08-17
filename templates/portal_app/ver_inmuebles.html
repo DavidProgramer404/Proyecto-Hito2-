@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Inmuebles Disponibles</h1>
+<ul>
+    {% for inmueble in inmuebles %}
+    {{ inmueble }}
+        <!-- <li>
+            <h2>{{ inmueble.nombre }}</h2>
+            <p>{{ inmueble.descripcion }}</p>
+            <p>Dirección: {{ inmueble.direccion }}</p>
+            <p>Precio Mensual: {{ inmueble.precio_mensual_arriendo }}</p>
+        </li> -->
+    {% empty %}
+        <p>No hay inmuebles disponibles.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

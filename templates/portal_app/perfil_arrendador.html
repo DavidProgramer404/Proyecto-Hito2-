@@ -1,8 +1,4 @@
-{% extends 'base.html' %}
-
-{% block title %}
-ARRRENDADOR | Page
-{% endblock %}
+{% extends "base.html" %}
 
 {% block content %}
 <div class="container mt-5">
@@ -10,25 +6,22 @@ ARRRENDADOR | Page
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
-                    <h2>Perfil de los Arrendadores</h2>
+                    <h2>Perfil del Arrendador</h2>
                 </div>
                 <div class="card-body">
-                    {% if "" %}
-                        {% for arrendador in arrendadores %}
-                            <div class="mb-4">
-                                <p class="lead"><strong>Nombre:</strong> {{ arrendador.nombre }} {{ arrendador.apellido }}</p>
-                                <p class="lead"><strong>Email:</strong> {{ arrendador.correo_electronico }}</p>
-                                <p class="lead"><strong>Teléfono:</strong> {{ arrendador.telefono_personal }}</p>
-                                <p class="lead"><strong>Dirección:</strong> {{ arrendador.direccion }}</p>
-                                <p class="lead"><strong>RUT:</strong> {{ arrendador.rut }}</p>
-                                <hr>
-                            </div>
-                        {% empty %}
-                            <p>No hay arrendadores disponibles.</p>
+                    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+                    <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+                    <p><strong>Correo electrónico:</strong> {{ usuario.correo_electronico }}</p>
+
+                    <h3 class="mt-4">Mis Inmuebles</h3>
+                    <ul class="list-group">
+                        {% for inmueble in inmuebles %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{ inmueble.nombre }}
+                                <span class="badge badge-primary badge-pill">{{ inmueble.precio_mensual_arriendo }}</span>
+                            </li>
                         {% endfor %}
-                    {% else %}
-                        <p>No hay arrendadores disponibles.</p>
-                    {% endif %}
+                    </ul>
                 </div>
             </div>
         </div>

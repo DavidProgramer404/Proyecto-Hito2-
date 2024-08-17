@@ -3,12 +3,12 @@ from .models import TipoUsuario, Comuna, Region, TipoInmueble, Usuario, Inmueble
 
 # tipoUsuario
 def get_tipo_usuarios():
-    tipo_usuarios = TipoUsuario.objects.all()
-    return tipo_usuarios
+    return TipoUsuario.objects.all()
+    
 
 
 def get_usuarios():
-    return Usuario.objects.all() 
+    return Usuario.objects.all()
 
 
 def crear_tipo_usuario(tipo):
@@ -32,13 +32,12 @@ def eliminar_tipo_usuario(id):
 
 # comuna
 def get_comunas():
-    comunas = Comuna.objects.all()
-    return comunas
+    return Comuna.objects.all()
+    
 
 
 def comuna(id):
-    comuna = Comuna.objects.get(id_comuna=id)
-    return comuna
+    return Comuna.objects.get(id_comuna=id)
 
 
 def crear_comuna(comuna):
@@ -62,13 +61,13 @@ def eliminar_comuna(id):
 
 # region
 def get_regiones():
-    regiones = Region.objects.all()
-    return regiones
+    return Region.objects.all()
+    
 
 
 def region(id):
-    region = Region.objects.get(id)
-    return region
+    return Region.objects.get(id)
+    
 
 
 def crear_region(region):
@@ -92,13 +91,13 @@ def eliminar_region(id):
 
 # tipo inmueble
 def get_tipo_inmuebles():
-    tipo_inmuebles = TipoInmueble.objects.all()
-    return tipo_inmuebles
+    return TipoInmueble.objects.all()
+
 
 
 def tipo_inmueble(id):
-    tipo_inmueble = TipoInmueble.objects.get(id_tipo_inmueble=id)
-    return tipo_inmueble
+    return TipoInmueble.objects.get(id_tipo_inmueble=id)
+    
 
 
 def crear_tipo_inmueble(tipo_inmueble):
@@ -122,17 +121,17 @@ def eliminar_tipo_inmueble(id):
 
 # usuario
 def get_usuarios():
-    usuarios = Usuario.objects.all()
-    return usuarios
+    return Usuario.objects.all()
+    
 
 
 def usuario(id):
-    usuario = Usuario.objects.get(id_usuario=id)
-    return usuario
+    return Usuario.objects.get(id_usuario=id)
+
 
 
 def crear_usuario(nombre, apellido, rut, direccion, telefono, correo, id_tipo_usuario):
-    tipo = tipo_usuario(id_tipo_usuario)
+    tipo = TipoUsuario(id_tipo_usuario)
     usuario = Usuario(
         nombre=nombre,
         apellido=apellido,
@@ -170,7 +169,7 @@ def actualizar_usuario(
     if correo:
         usu.correo = correo
     if id_tipo_usuario:
-        tipo = tipo_usuario(id_tipo_usuario)
+        tipo = TipoUsuario(id_tipo_usuario)
         usu.id_tipo_usuario = tipo
     usu.save()
     return usu
@@ -184,18 +183,18 @@ def eliminar_usuario(id):
 
 # inmuebles
 def get_inmuebles():
-    inmuebles = Inmueble.objects.all()
-    return inmuebles
+    return Inmueble.objects.all()
+    
 
 
 def inmueble(id):
-    inmueble = Inmueble.objects.get(id)
-    return inmueble
+    return Inmueble.objects.get(id)
+    
 
 
 def crear_inmueble(
     nombre,
-    m2_contruidos,
+    m2_contruido,
     m2_terreno,
     nro_estacionamiento,
     nro_habitaciones,
@@ -204,24 +203,23 @@ def crear_inmueble(
     precio_arriendo,
     id_usuario,
     id_comuna,
-    id_region,
     id_tipo_inmueble,
 ):
     usuario = usuario(id_usuario)
     comuna = comuna(id_comuna)
-    region = region(id_region)
+
     tipo_inmuebles = tipo_inmueble(id_tipo_inmueble)
     inmueble = Inmueble(
         nombre=nombre,
-        m2_contruidos=m2_contruidos,
+        m2_contruido=m2_contruido,
         m2_terreno=m2_terreno,
+        nro_estacionamiento=nro_estacionamiento,
         nro_habitaciones=nro_habitaciones,
         nro_banio=nro_banio,
         direccion=direccion,
         precio_arriendo=precio_arriendo,
         id_usuario=usuario,
         id_comuna=comuna,
-        id_region=region,
         id_tipo_inmueble=tipo_inmuebles,
     )
     inmueble.save()
@@ -231,7 +229,7 @@ def crear_inmueble(
 def actualizar_inmuble(
     id,
     nombre=None,
-    m2_contruidos=None,
+    m2_contruido=None,
     m2_terreno=None,
     nro_estacionamiento=None,
     nro_habitaciones=None,
@@ -240,18 +238,16 @@ def actualizar_inmuble(
     precio_arriendo=None,
     id_usuario=None,
     id_comuna=None,
-    id_region=None,
     id_tipo_inmueble=None,
 ):
     inmueble = inmueble(id)
     usuario = usuario(id_usuario)
     comuna = comuna(id_comuna)
-    region = region(id_region)
     tipo_inmueble = tipo_inmueble(id_tipo_inmueble)
     if nombre:
         inmueble.nombre = nombre
-    if m2_contruidos:
-        inmueble.m2_contruidos = m2_contruidos
+    if m2_contruido:
+        inmueble.m2_contruido = m2_contruido
     if m2_terreno:
         inmueble.m2_terreno = m2_terreno
     if nro_estacionamiento:
@@ -268,8 +264,6 @@ def actualizar_inmuble(
         inmueble.id_usuario = usuario
     if id_comuna:
         inmueble.id_comuna = comuna
-    if id_region:
-        inmueble.id_region = region
     if id_tipo_inmueble:
         inmueble.id_tipo_inmueble = tipo_inmueble
     inmueble.save()
