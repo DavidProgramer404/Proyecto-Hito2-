@@ -16,6 +16,7 @@ class TipoUsuario(models.Model):
 class Region(models.Model):
     id_region = models.AutoField(primary_key=True)
     region = models.CharField(max_length=50, null=False)
+    
 
     class Meta:
         managed=False
@@ -73,7 +74,7 @@ class Inmueble(models.Model):
     nro_habitacion = models.IntegerField()
     nro_banio = models.IntegerField()
     direccion = models.CharField(max_length=50, null=False)
-    region = models.ForeignKey(Region, on_delete=models.CASCADE)  
+    region = models.CharField(max_length=50, null=False) 
     precio_mensual_arriendo = models.FloatField(null=False)
     id_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, db_column='id_usuario')
     id_comuna = models.ForeignKey(Comuna, on_delete=models.CASCADE, db_column='id_comuna')

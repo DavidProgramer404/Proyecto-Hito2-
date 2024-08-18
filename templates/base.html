@@ -11,13 +11,26 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- css link -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    
+
 </head>
 
 <body>
     <!-- Barra de navegación de Bootstrap -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'index' %}">Portal Inmobiliario</a>
+        <!-- Logo con un borde-->
+        <img src="{% static 'img/logo.png' %}" style="
+        margin-right: 115px;
+        width: 80px; 
+    height: 80px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 2px solid #000;
+        
+        "alt="Logo">
+        <!-- Nombre de la página -->
+        <a class="navbar-brand" href="{% url 'index' %}">
+            Portal Inmobiliario
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,37 +38,47 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'perfil_arrendador' %}">Arrendador</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'perfil_arrendatario' %}">Arrendatario</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{% url 'ver_inmuebles' %}">Ver Inmuebles</a>
-                    </li>
-                    <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
-                        {% csrf_token %}
-                        <button type="submit">Cerrar Sesión</button>
-                    </form>
-                    <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Cerrar Sesión</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil_arrendador' %}">Arrendador</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'perfil_arrendatario' %}">Arrendatario</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'ver_inmuebles' %}">Ver Inmuebles</a>
+                </li>
+                <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar Sesión</button>
+                </form>
+                <a class="nav-link" href="#" onclick="document.getElementById('logout-form').submit();">Cerrar
+                    Sesión</a>
                 {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                </li>
 
                 {% endif %}
             </ul>
         </div>
+        <!-- Usuario de bienvenido  -->
+    {% if user.is_authenticated %}
+    <div class="d-flex justify-content-end">
+        <span class="mr-2" style="color: white; font-weight: bold;">Bienvenido(a), {{ user.username }}</span>
+    </div>
+{% endif %}
     </nav>
+    
 
     {% block content %}
+    
     <div class="container mt-4">
+        
         <h1 class="mb-4">Listado de Usuarios</h1>
-
+        
         <div class="display-flex">
             {% if user.is_authenticated %}
             <a href="{% url 'crear_usuario' %}" class="btn btn-primary mt-4">Crear Usuario</a>

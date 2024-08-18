@@ -10,8 +10,9 @@ from django.http import HttpResponse
 @login_required
 def index(request):
     usuarios = Usuario.objects.all()
+    usuario = request.user
     inmuebles = Inmueble.objects.all()
-    return render(request, 'base.html', {'usuarios': usuarios, 'inmuebles': inmuebles})
+    return render(request, 'base.html', {'usuarios': usuarios, 'inmuebles': inmuebles,'usuario': usuario})
 
 def crear_usuario(request):
     if request.method == 'POST':
@@ -89,7 +90,7 @@ def inmuebles_list(request):
 @login_required
 def ver_inmuebles(request):
     inmuebles = Inmueble.objects.all()
-    return HttpResponse(inmuebles)
+    return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})
     # return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})
 
 

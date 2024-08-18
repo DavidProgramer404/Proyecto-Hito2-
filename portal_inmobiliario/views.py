@@ -27,3 +27,16 @@ def perfil_arrendatario(request):
     # Pasa los arrendatarios al contexto de la plantilla
     context = {'arrendatarios': arrendatarios}
     return render(request, 'portal_app/perfil_arrendatario.html', context)
+
+# ver inmuebles
+
+def ver_inmuebles(request):
+    # Consulta SQL cruda para obtener todos los inmuebles
+    sql = 'SELECT * FROM inmuebles'
+    
+    # Ejecuta la consulta cruda
+    inmuebles = Inmueble.objects.raw(sql)
+    
+    # Pasa los inmuebles al contexto de la plantilla
+    context = {'inmuebles': inmuebles}
+    return render(request, 'portal_app/ver_inmuebles.html', context)
