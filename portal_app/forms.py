@@ -1,7 +1,7 @@
 from django import forms
-from .models import Usuario, Comuna, TipoInmueble, Inmueble
-from django.contrib.auth.forms import AuthenticationForm
+from .models import Inmueble, Usuario
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
@@ -13,8 +13,17 @@ class UsuarioForm(forms.ModelForm):
             "direccion",
             "telefono_personal",
             "correo_electronico",
-            "tipo_usuario",
+            # "tipo_usuario",
         ]
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control'}),
+            'rut': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'telefono_personal': forms.TextInput(attrs={'class': 'form-control'}),
+            'correo_electronico': forms.EmailInput(attrs={'class': 'form-control'}),
+            # 'tipo_usuario': forms.Select(attrs={'class': 'form-control'}),
+        }
 
 class InmuebleForm(forms.ModelForm):
     class Meta:
@@ -33,7 +42,20 @@ class InmuebleForm(forms.ModelForm):
             'precio_mensual_arriendo',
             'descripcion',
         ]
-
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'm2_construido': forms.NumberInput(attrs={'class': 'form-control'}),
+            'm2_terreno': forms.NumberInput(attrs={'class': 'form-control'}),
+            'nro_estacionamiento': forms.NumberInput(attrs={'class': 'form-control'}),
+            'nro_habitacion': forms.NumberInput(attrs={'class': 'form-control'}),
+            'nro_banio': forms.NumberInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'region': forms.Select(attrs={'class': 'form-control'}),
+            'comuna': forms.Select(attrs={'class': 'form-control'}),
+            'tipo_inmueble': forms.Select(attrs={'class': 'form-control'}),
+            'precio_mensual_arriendo': forms.NumberInput(attrs={'class': 'form-control'}),
+            'descripcion': forms.Textarea(attrs={'class': 'form-control'}),
+        }
 
 class LoginForm(forms.Form):
     correo_electronico = forms.EmailField(widget=forms.EmailInput(attrs={
@@ -46,12 +68,13 @@ class LoginForm(forms.Form):
     }))
 
     def clean(self):
-        correo_electronico = self.cleaned_data.get('correo_electronico')
-        password = self.cleaned_data.get('password')
+        cleaned_data = super().clean()
+        correo_electronico = cleaned_data.get('correo_electronico')
+        password = cleaned_data.get('password')
         user = authenticate(username=correo_electronico, password=password)
         if user is None:
             raise forms.ValidationError('Correo electrónico o contraseña incorrectos')
-        return self.cleaned_data
+        return cleaned_data
 
     def get_user(self):
         correo_electronico = self.cleaned_data.get('correo_electronico')

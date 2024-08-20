@@ -20,6 +20,7 @@ from . import views
 # from portal_app.views import login_view,logout_view
 from django.contrib.auth import views as auth_views
 from .views import index
+from .views import ver_inmuebles
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     # path('login/', login_view, name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     # path('logout/', logout_view, name='logout'),
+    path('inmuebles/', ver_inmuebles, name='ver_inmuebles'),
 ]

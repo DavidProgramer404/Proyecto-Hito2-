@@ -40,3 +40,7 @@ def ver_inmuebles(request):
     # Pasa los inmuebles al contexto de la plantilla
     context = {'inmuebles': inmuebles}
     return render(request, 'portal_app/ver_inmuebles.html', context)
+
+def ver_inmuebles(request):
+    inmuebles = Inmueble.objects.all()
+    return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})

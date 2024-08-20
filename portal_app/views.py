@@ -5,14 +5,13 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.http import HttpResponse
 
 @login_required
 def index(request):
     usuarios = Usuario.objects.all()
     usuario = request.user
     inmuebles = Inmueble.objects.all()
-    return render(request, 'base.html', {'usuarios': usuarios, 'inmuebles': inmuebles,'usuario': usuario})
+    return render(request, 'base.html', {'usuarios': usuarios, 'inmuebles': inmuebles, 'usuario': usuario})
 
 def crear_usuario(request):
     if request.method == 'POST':
@@ -30,7 +29,7 @@ def crear_inmueble(request):
         form = InmuebleForm(request.POST)
         if form.is_valid():
             inmueble = form.save(commit=False)
-            inmueble.usuario = request.user.usuario  # Asumimos que Usuario está relacionado con el User
+            inmueble.usuario = request.user.usuario  # Asumimos que Usuario está relacionado con User
             inmueble.save()
             return redirect('inmuebles_list')
     else:
@@ -39,7 +38,7 @@ def crear_inmueble(request):
 
 @login_required
 def actualizar_inmueble(request, inmueble_id):
-    inmueble = get_object_or_404(Inmueble, id=inmueble_id, usuario=request.user.usuario)
+    inmueble = get_object_or_404(Inmueble, id_inmueble=inmueble_id, usuario=request.user.usuario)
     
     if request.method == 'POST':
         form = InmuebleForm(request.POST, instance=inmueble)
@@ -51,7 +50,15 @@ def actualizar_inmueble(request, inmueble_id):
     
     return render(request, 'portal_app/actualizar_inmueble.html', {'form': form, 'inmueble': inmueble})
 
-def register(request):
+@login_required
+def borrar_inmueble(request, inmueble_id):
+    inmueble = get_object_or_404(Inmueble, id_inmueble=inmueble_id, usuario=request.user.usuario)
+    if request.method == 'POST':
+        inmueble.delete()
+        return redirect('inmuebles_list')
+    return render(request, 'portal_app/borrar_inmueble.html', {'inmueble': inmueble})
+
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -61,11 +68,25 @@ def register(request):
             return redirect('index')
         else:
             messages.error(request, 'Nombre de usuario o contraseña incorrectos')
-    return render(request, 'portal_app/register.html')
+    return render(request, 'portal_app/login.html')
 
 def logout_view(request):
     auth_logout(request)
     return redirect('login')
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = User.objects.create_user(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            auth_login(request, user)
+            messages.success(request, 'Registro exitoso. Bienvenido!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Error en el registro.')
+    return render(request, 'registration/register.html')
 
 @login_required
 def perfil_arrendatario(request):
@@ -74,8 +95,7 @@ def perfil_arrendatario(request):
 @login_required
 def perfil_arrendador(request):
     arrendadores = Usuario.objects.filter(tipo_usuario__tipo_usuario='Arrendador')
-    context = {'arrendadores': arrendadores}
-    return render(request, 'portal_app/perfil_arrendador.html', context)
+    return render(request, 'portal_app/perfil_arrendador.html', {'arrendadores': arrendadores})
 
 @login_required
 def perfil_arrendatarios(request):
@@ -91,22 +111,3 @@ def inmuebles_list(request):
 def ver_inmuebles(request):
     inmuebles = Inmueble.objects.all()
     return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})
-    # return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})
-
-
-# REGISTER
-def register(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        # Crear un nuevo usuario
-        user = User.objects.create_user(username=username, password=password)
-        # Autenticar y loguear al nuevo usuario
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            auth_login(request, user)
-            messages.success(request, 'Registro exitoso. Bienvenido!')
-            return redirect('index')  # Redirige a la página de inicio o dashboard
-        else:
-            messages.error(request, 'Error en el registro.')
-    return render(request, 'registration/register.html')
