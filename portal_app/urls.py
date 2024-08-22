@@ -1,6 +1,7 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from .views import *
+from . import views
 
 urlpatterns = [
     # Autenticación
@@ -20,9 +21,11 @@ urlpatterns = [
     path('inmuebles/borrar/<int:inmueble_id>/', borrar_inmueble, name='borrar_inmueble'),
     path('inmuebles/lista/', inmuebles_list, name='inmuebles_list'),
     path('inmuebles/ver/', ver_inmuebles, name='ver_inmuebles'),
+    path('actualizar_inmueble/<int:inmueble_id>/', views.actualizar_inmueble, name='actualizar_inmueble'),
 
     # Perfiles de usuarios
     path('perfil_arrendatario/', perfil_arrendatario, name='perfil_arrendatario'),
     path('perfil_arrendador/', perfil_arrendador, name='perfil_arrendador'),
     path('perfil_arrendatarios/', perfil_arrendatarios, name='perfil_arrendatarios'),
+    
 ]

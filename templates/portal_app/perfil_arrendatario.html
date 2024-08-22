@@ -13,20 +13,20 @@ ARRRENDATARIOS | Page
                     <h2>Perfil de los Arrendatarios</h2>
                 </div>
                 <div class="card-body">
-                    {% if arrendatarios %}
-                        {% for arrendatario in arrendatarios %}
+                    {% if inmuebles %}
+                        {% for inmueble in inmuebles %}
                             <div class="mb-4">
-                                <p class="lead"><strong>Nombre:</strong> {{ arrendatario.nombre }} {{ arrendatario.apellido }}</p>
-                                <p class="lead"><strong>Email:</strong> {{ arrendatario.correo_electronico }}</p>
-                                <p class="lead"><strong>Teléfono:</strong> {{ arrendatario.telefono_personal }}</p>
-                                <p class="lead"><strong>Dirección:</strong> {{ arrendatario.direccion }}</p>
+                                <p class="lead"><strong>Nombre:</strong> {{ inmueble.nombre }} {{ inmueble.descripcion }}</p>
+                                <p class="lead"><strong>M2 construidos:</strong> {{ inmueble.ms_construido }}</p>
+                                <p class="lead"><strong>Estacionamiento:</strong> {{ inmueble.nro_estacionamiento }}</p>
+                                <p class="lead"><strong>Habitación:</strong> {{ inmueble.nro_habitacion }}</p>
                                 <hr>
                             </div>
                         {% empty %}
-                            <p>No hay arrendatarios disponibles.</p>
+                            <p>No hay perfil disponibles.</p>
                         {% endfor %}
                     {% else %}
-                        <p>No hay arrendatarios disponibles.</p>
+                        <p>No hay perfil disponibles.</p>
                     {% endif %}
                 </div>
             </div>

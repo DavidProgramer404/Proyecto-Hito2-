@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Inmuebles{% endblock %}
+
+{% block content %}
+<h2>Lista de Inmuebles</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Comuna</th>
+            <th>Región</th>
+            <th>Precio Mensual</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inmueble in inmuebles %}
+        <tr>
+            <td>{{ inmueble.nombre }}</td>
+            <td>{{ inmueble.direccion }}</td>
+            <td>{{ inmueble.comuna }}</td>
+            <td>{{ inmueble.region }}</td>
+            <td>{{ inmueble.precio_mensual_arriendo }}</td>
+            <td>
+                <a href="{% url 'actualizar_inmueble' inmueble.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'borrar_inmueble' inmueble.id %}" class="btn btn-sm btn-danger">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'crear_inmueble' %}" class="btn btn-primary">Agregar Inmueble</a>
+{% endblock %}

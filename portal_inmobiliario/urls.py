@@ -31,4 +31,5 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     # path('logout/', logout_view, name='logout'),
     path('inmuebles/', ver_inmuebles, name='ver_inmuebles'),
+    
 ]

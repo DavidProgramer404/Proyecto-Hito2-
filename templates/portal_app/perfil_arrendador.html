@@ -15,16 +15,21 @@
 
                     <h3 class="mt-4">Mis Inmuebles</h3>
                     <ul class="list-group">
-                        {% for inmueble in inmuebles %}
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ inmueble.nombre }}
-                                <span class="badge badge-primary badge-pill">{{ inmueble.precio_mensual_arriendo }}</span>
-                            </li>
-                        {% endfor %}
+                        {% if inmuebles %}
+                            {% for inmueble in inmuebles %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ inmueble.nombre }}
+                                    <span class="badge badge-primary badge-pill">{{ inmueble.precio_mensual_arriendo }}</span>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li class="list-group-item">No tienes inmuebles registrados.</li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Inmueble{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Actualizar Inmueble</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar Inmueble</button>
+    </form>
+</div>
+{% endblock %}
