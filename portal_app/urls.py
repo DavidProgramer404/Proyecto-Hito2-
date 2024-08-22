@@ -22,6 +22,7 @@ urlpatterns = [
     path('inmuebles/lista/', inmuebles_list, name='inmuebles_list'),
     path('inmuebles/ver/', ver_inmuebles, name='ver_inmuebles'),
     path('actualizar_inmueble/<int:inmueble_id>/', views.actualizar_inmueble, name='actualizar_inmueble'),
+    
 
     # Perfiles de usuarios
     path('perfil_arrendatario/', perfil_arrendatario, name='perfil_arrendatario'),

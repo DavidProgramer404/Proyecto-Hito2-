@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import UsuarioForm, InmuebleForm, LoginForm
-from .models import Inmueble, Usuario
+from .models import Inmueble, Usuario , Comuna , Region
 
 # Vista principal (Página de inicio)
 def index(request):
@@ -108,3 +108,23 @@ def borrar_inmueble(request, id):
     inmueble = get_object_or_404(Inmueble, id=id)
     inmueble.delete()
     return redirect('portal_app/borrar_inmuebles.html')
+
+
+def lista_inmuebles(request):
+    id_comuna = request.GET.get('comuna')
+    id_region = request.GET.get('region')
+    
+    inmuebles = Inmueble.objects.all()
+    
+    if id_comuna:
+        inmuebles = inmuebles.filter(comuna_id=id_comuna)
+    if id_region:
+        inmuebles = inmuebles.filter(comuna__region_id=id_region)
+    
+    context = {
+        'inmuebles': inmuebles,
+        'comunas': Comuna.objects.all(),
+        'regiones': Region.objects.all(),
+    }
+    
+    return render(request, 'portal_app/ver_inmuebles.html', context)

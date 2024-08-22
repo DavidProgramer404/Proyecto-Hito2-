@@ -44,3 +44,24 @@ def ver_inmuebles(request):
 def ver_inmuebles(request):
     inmuebles = Inmueble.objects.all()
     return render(request, 'portal_app/ver_inmuebles.html', {'inmuebles': inmuebles})
+
+
+
+def lista_inmuebles(request):
+    comuna = request.GET.get('comunas')
+    region = request.GET.get('regiones')
+    
+    inmuebles = Inmueble.objects.all()
+    
+    if comuna:
+        inmuebles = inmuebles.filter(comunas=comuna)
+    if region:
+        inmuebles = inmuebles.filter(regiones=region)
+    
+    context = {
+        'inmuebles': inmuebles,
+        'comunas': Inmueble.objects.values_list('comuna', flat=True).distinct(),
+        'regiones': Inmueble.objects.values_list('region', flat=True).distinct(),
+    }
+    
+    return render(request, 'ver_inmuebles.html', context)
